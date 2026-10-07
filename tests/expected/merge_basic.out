@@ -1,0 +1,32 @@
+{"a": [1, {"b": 2}]} {"a": [1, {"b": 2}, 3]}
+1
+0
+0
+0
+0
+1
+0
+{"extra": null, "keep": 1, "server": {"host": "a", "port": 8080, "tls": 1}, "tags": [9]}
+{"keep": 1, "server": {"host": "a", "port": 80}, "tags": [1, 2]}
+5
+{"extra": null, "server": {"port": 8080, "tls": 1}, "tags": [9]}
+{"op": "remove", "path": "/gone"}
+{"op": "replace", "path": "/list/1", "value": 5}
+{"op": "remove", "path": "/list/3"}
+{"op": "remove", "path": "/list/2"}
+{"op": "add", "path": "/n/q/1", "value": 2}
+{"op": "add", "path": "/n/q/2", "value": 3}
+{"op": "replace", "path": "/name", "value": "y"}
+{"op": "add", "path": "/new", "value": [1]}
+1
+{"gone": 1, "list": [1, 2, 3, 4], "n": {"p": 1, "q": [1]}, "name": "x"}
+[]
+[{"op": "replace", "path": "", "value": 2}]
+2
+[{"op": "add", "path": "/1/1", "value": 3}, {"op": "add", "path": "/2", "value": 4}]
+{"a/b": [2, 3, 4], "m~n": 1}
+merge: cannot remove missing path /x
+merge: cannot replace missing path /x
+merge: unsupported patch op: move
+merge: malformed patch op
+merge: malformed patch op

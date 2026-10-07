@@ -1,0 +1,16 @@
+[]
+["$: missing required key 'name'", "$: missing required key 'port'"]
+["name: length must be >= 1", "port: must be >= 1"]
+["name: length must be <= 8", "port: expected integer, got number"]
+["debug: expected boolean, got number", "mode: not one of the allowed values", "name: expected string, got number", "port: expected integer, got string"]
+["net: missing required key 'host'", "tags: length must be <= 2", "tags[1]: expected string, got number", "$: unexpected key 'another'", "$: unexpected key 'extra'"]
+["$: expected object, got array"]
+["net.host: expected string, got null"]
+[]
+[]
+["[0]: expected array, got number", "[1][1]: expected number, got string"]
+["k[1].v: expected number, got string"]
+[]
+check passed
+schema: $: missing required key 'port'
+schema: unknown type 'nope'

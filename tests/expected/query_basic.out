@@ -1,0 +1,21 @@
+web
+443
+?
+?
+?
+1
+2
+?
+80
+{"r": 1}
+1
+0
+{"a.b": 1, "list": [{"id": 10}, {"id": 2}], "new": {"deep": ["x"]}, "server": {"name": "api", "ports": [80, 443, 8080, 9090]}}
+{"a.b": 1, "list": [{"id": 10}], "server": {"ports": [80, 8080, 9090]}}
+[1]
+[2, 3]
+query: index 5 is out of range (length 1)
+query: cannot set into a number
+query: cannot remove the root
+jpath: bad index in path 'a['
+query: expected an array index, got 'k'

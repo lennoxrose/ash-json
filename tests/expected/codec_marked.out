@@ -1,0 +1,21 @@
+{"a.b": {"x": 1}, "debug": 1, "list": [1, 1, 0], "n": 1, "off": 0}
+["[\"a.b\"].x", "debug", "list[0]", "list[2]", "off"]
+{"[\"a.b\"].x": 1, "debug": 1, "list[0]": 1, "list[2]": 1, "off": 1}
+{"a.b": {"x": true}, "debug": true, "list": [true, 1, false], "n": 1, "off": false}
+{
+  "a.b": {
+    "x": true
+  },
+  "debug": true,
+  "list": [
+    true,
+    1,
+    false
+  ],
+  "n": 1,
+  "off": false
+}
+{"a.b": {"x": 1}, "debug": 1, "list": [1, 1, 0], "n": 1, "off": 0}
+true
+{"a": "x", "k": [1, 2]}
+{"a": "x", "k": [1, 2]}

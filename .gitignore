@@ -1,0 +1,6 @@
+# Private files
+docs/
+needs.md
+
+# Test files
+tests/tmp/

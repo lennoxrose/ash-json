@@ -1,0 +1,37 @@
+debug is on
+tls is off
+4
+{
+  "debug": true,
+  "flags": [
+    true,
+    false,
+    1
+  ],
+  "name": "app",
+  "net": {
+    "ports": [
+      80,
+      443
+    ],
+    "tls": false
+  },
+  "retries": 3
+}
+1
+{"debug": false, "flags": [true, false, 1], "name": "app", "net": {"ports": [80, 443], "tls": 1, "verify": true}, "retries": 5}
+{"debug": false, "flags": [false, 1], "name": "app", "net": {"ports": [80, 443], "tls": 1, "verify": true}, "retries": 5}
+{"debug": false, "flags": [false, 1], "name": "app", "retries": 5}
+{
+  "debug": false,
+  "flags": [
+    false,
+    1
+  ],
+  "name": "app",
+  "retries": 5
+}
+
+1
+doc: set_bool expects yes or no
+doc: cannot remove the root

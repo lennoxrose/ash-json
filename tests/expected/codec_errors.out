@@ -1,0 +1,20 @@
+json: expected string key at line 1, column 2
+json: unterminated string at line 1, column 1
+json: expected ',' or ']' at line 1, column 6
+json: expected ',' or ']' at line 1, column 4
+json: expected ':' at line 1, column 6
+json: expected string key at line 1, column 9
+json: invalid literal at line 1, column 1
+json: invalid literal at line 1, column 1
+json: unexpected trailing characters at line 1, column 5
+json: unexpected end of input at line 1, column 1
+json: invalid number at line 1, column 1
+json: invalid number at line 1, column 1
+json: invalid number at line 1, column 1
+json: unexpected character '?' at line 2, column 8
+json: invalid escape at line 1, column 6
+json: unsupported escape \u00e9 at line 1, column 2
+json: invalid \u escape at line 1, column 2
+json: unsupported escape \b at line 1, column 2
+json: cannot stringify a function
+json: parse expects a string

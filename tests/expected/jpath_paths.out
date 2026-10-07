@@ -1,0 +1,17 @@
+["server", "ports", 0, "name"]
+["a", "x.y", "b"]
+[]
+server.ports[0].name
+a["x.y"].b
+
+a["q\"r"][2]
+/a/0/b~1c/d~0e
+
+["a", "0", "b/c", "d~e"]
+[]
+1
+0
+0
+jpath: bad index in path 'a[x]'
+jpath: bad quoted key in path 'a["x'
+jpath: pointer must start with '/': a/b

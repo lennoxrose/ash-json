@@ -1,0 +1,16 @@
+{"list": [1, 2, 3], "obj": {"k": 1}, "quote": "say \"/* no */\"", "url": "http://x.y/a//b"}
+[1, 2]
+{"a": "x,]"}
+[1, 2]
+{"default": 1}
+{"present": 2}
+{"id": 1, "msg": "a\nb"}
+[1, 2]
+"s"
+null
+
+5
+[{"id": 1, "msg": "a\nb"}, [1, 2], "s", null, {"id": 5}]
+json: expected string key at line 3, column 2
+json: expected end of line at line 1, column 3
+[]
