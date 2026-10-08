@@ -4,7 +4,7 @@
 local src = "{\"name\": \"app\", \"debug\": true, \"retries\": 3, \"flags\": [true, false, 1], \"net\": {\"tls\": false, \"ports\": [80, 443]}}";
 local d = doc.from_text(src);
 
-// Values are plain 1/0, so they work in conditions.
+// Booleans are real yes/no values, so they work in conditions.
 given doc.get(d, "debug", no) { say "debug is on"; }
 given not doc.get(d, "net.tls", yes) { say "tls is off"; }
 say doc.get(d, "retries", 0) + 1;
@@ -18,13 +18,13 @@ doc.set(d, "retries", 5);
 doc.set_bool(d, "net.verify", yes);
 doc.set_bool(d, "debug", no);
 doc.set(d, "net.tls", 1);
-say codec.encode(doc.value(d), 0, d["bools"]);
+say codec.stringify(doc.value(d));
 
-// Removing an array element shifts the boolean marks behind it.
+// Removing an array element keeps the booleans behind it.
 doc.remove(d, "flags[0]");
-say codec.encode(doc.value(d), 0, d["bools"]);
+say codec.stringify(doc.value(d));
 doc.remove(d, "net");
-say codec.encode(doc.value(d), 0, d["bools"]);
+say codec.stringify(doc.value(d));
 
 // Save and re-open.
 local path = "tests/tmp/doc_config.json";

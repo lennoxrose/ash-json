@@ -1,15 +1,15 @@
 {"a": [1, {"b": 2}]} {"a": [1, {"b": 2}, 3]}
-1
-0
-0
-0
-0
-1
-0
-{"extra": null, "keep": 1, "server": {"host": "a", "port": 8080, "tls": 1}, "tags": [9]}
-{"keep": 1, "server": {"host": "a", "port": 80}, "tags": [1, 2]}
+yes
+no
+no
+no
+no
+yes
+no
+{"server": {"host": "a", "port": 8080, "tls": 1}, "tags": [9], "keep": true, "extra": null}
+{"server": {"host": "a", "port": 80}, "tags": [1, 2], "keep": true}
 5
-{"extra": null, "server": {"port": 8080, "tls": 1}, "tags": [9]}
+{"server": {"port": 8080, "tls": 1}, "tags": [9], "extra": null}
 {"op": "remove", "path": "/gone"}
 {"op": "replace", "path": "/list/1", "value": 5}
 {"op": "remove", "path": "/list/3"}
@@ -17,9 +17,9 @@
 {"op": "add", "path": "/n/q/1", "value": 2}
 {"op": "add", "path": "/n/q/2", "value": 3}
 {"op": "replace", "path": "/name", "value": "y"}
-{"op": "add", "path": "/new", "value": [1]}
-1
-{"gone": 1, "list": [1, 2, 3, 4], "n": {"p": 1, "q": [1]}, "name": "x"}
+{"op": "add", "path": "/new", "value": [true]}
+yes
+{"name": "x", "gone": 1, "list": [1, 2, 3, 4], "n": {"p": 1, "q": [1]}}
 []
 [{"op": "replace", "path": "", "value": 2}]
 2

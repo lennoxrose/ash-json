@@ -1,4 +1,4 @@
-# ash-json 0.2.0
+# ash-json 0.3.0
 
 JSON for [Ash](../ash): parse, edit, merge, validate and save JSON files from
 plain Ash programs. Pure Ash, runs on `ashvm` and `kiln`.
@@ -12,17 +12,16 @@ forgepack add github:lennoxrose/ash-json
 ```ash
 @import <ash-json>;              // the only import you need (from a checkout: @import <./ash-json.ash>;)
 
-local cfg = doc.open("config.json");           // keeps true/false when saved again
+local cfg = doc.open("config.json");           // true/false are real booleans
 given doc.get(cfg, "debug", no) { say "debug on"; }
 doc.set(cfg, "server.ports[0]", 8080);
 doc.set_bool(cfg, "server.tls", yes);
-doc.save("config.json", cfg);                  // pretty, keys sorted, true/false intact
+doc.save("config.json", cfg);                  // pretty, keys in file order, true/false intact
 ```
 
-> **Needs a raised function limit.** Ash currently allows 64 functions per
-> program and ash-json defines 87, so `@import <ash-json>;` only works on
-> engines built with `MAX_VM_FUNCS` / `MAX_KILN_FUNCS` raised. See `needs.md`.
-> Until then import single modules, e.g. `@import <./src/data/query/query.ash>;`.
+> **Needs the current Ash.** 0.3.0 builds on real booleans, insertion-ordered maps,
+> forward declarations, `chr`/`ord`,
+> `sort`, `rename_file` and the raised function limit; it does not run on older engines.
 
 ## Layout
 
@@ -37,7 +36,6 @@ src/data/merge/merge.ash          clone / equal / merge / diff / patch
 src/validate/schema/schema.ash    validate values against a schema
 src/io/files/files.ash            load_or, JSONC config, JSON Lines
 tests/                            golden-output tests, run on both engines
-needs.md                          what Ash is missing for this library
 ```
 
 ## API
@@ -47,9 +45,10 @@ Every function raises a string beginning with its module name (`json: ...`) on b
 **json** (0.1.0 API, unchanged): `parse(text)`, `stringify(value)`, `load(path)`,
 `save(path, value)`, plus `pretty(value, indent)`.
 
-**codec**: `parse`, `stringify` (compact, keys sorted), `pretty(value, indent)`,
-`load`, `save`, `parse_lines(text)`, `parse_marked(text)` -> `[value, bools]`,
-`encode(value, indent, bools)`, `sorted_keys(map)`. Errors read
+**codec**: `parse`, `stringify` (compact, keys in insertion order), `pretty(value, indent)`,
+`load`, `save` (writes a temp file, then renames it over the target), `parse_lines(text)`,
+`encode(value, indent)`, `sorted_keys(map)`. `true`/`false`/`null` are `yes`/`no`/`none`;
+`\uXXXX` (surrogate pairs too), `\b` and `\f` are decoded. Errors read
 `json: expected ',' or ']' at line 3, column 9`.
 
 **query**: `get(value, path, fallback)`, `exists(value, path)`, `set(value, path, item)`,
@@ -58,9 +57,8 @@ Every function raises a string beginning with its module name (`json: ...`) on b
 root, so write `v = query.remove(v, "a[0]")`.
 
 **doc**: `open(path)`, `from_text(src)`, `save(path, d)`, `text(d)`, `value(d)`,
-`get`, `exists`, `set`, `set_bool(d, path, yes_or_no)`, `remove`. Values are plain
-`1`/`0` (usable in `given`); the document remembers which paths were `true`/`false`
-and writes them back.
+`get`, `exists`, `set`, `set_bool(d, path, yes_or_no)`, `remove`. A document is the
+map `{"value": data}`; booleans are real, and keys keep the file's order on save.
 
 **merge**: `clone`, `equal`, `merge(a, b)` (deep, `b` wins, arrays replaced),
 `diff(a, b)` -> `[{"op","path","value"}]` (JSON Pointer), `patch(v, ops)`
@@ -73,12 +71,18 @@ and writes them back.
 **files**: `load_or(path, fallback)`, `load_config(path)` / `parse_config(src)` (allows
 `//` and `/* */` comments and trailing commas), `read_lines`, `write_lines`, `append_line`.
 
-## Limitations (Ash, not the library -- see needs.md)
+## Changes in 0.3.0
 
-- No boolean type: plain `parse` turns `true`/`false` into `1`/`0`; use `doc` to keep them.
-- Map keys come out sorted (Ash's key order differs between engines); original order is lost.
-- `\uXXXX` decodes only printable ASCII; other `\u` escapes, `\b` and `\f` raise. Raw UTF-8 passes through.
-- No atomic save (no file rename), and `str(number)` for huge/tiny numbers differs between engines.
+- The codec was rewritten on the language's new tools (real booleans, `chr`/`ord`, forward declarations), without any compiler support.
+- `parse_marked`, the `bools` argument of `encode` and the boolean bookkeeping in `doc` are gone: `true`/`false` parse to `yes`/`no` and print back as `true`/`false`.
+- Output keeps the key order of the input instead of sorting (`codec.sorted_keys` is still there).
+- `load`/`save` and `doc.save` are atomic (temp file + rename).
+- `schema` type `"boolean"` means a real boolean.
+
+## Limitations
+
+- Numbers print with at most 6 fraction digits (Ash's number format), so `3.14159265` comes back as `3.141593`.
+- `\u0000` cannot be represented (Ash strings are NUL-terminated) and raises.
 
 ## Tests
 

@@ -1,4 +1,4 @@
-// ash-json.ash -- the single entry point of ash-json 0.2.0. It defines nothing itself:
+// ash-json.ash -- the single entry point of ash-json 0.3.0. It defines nothing itself:
 // it only imports every module (Ash merges imports into one namespace table, so
 // they all become callable). Its own namespace would be "ash-json", which can't be
 // written in code (the dash lexes as minus), hence the json.* wrappers live in

@@ -9,9 +9,9 @@ a["q\"r"][2]
 
 ["a", "0", "b/c", "d~e"]
 []
-1
-0
-0
+yes
+no
+no
 jpath: bad index in path 'a[x]'
 jpath: bad quoted key in path 'a["x'
 jpath: pointer must start with '/': a/b

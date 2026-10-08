@@ -1,0 +1,39 @@
+yes
+no
+boolean
+yes
+no
+{"debug": true, "n": 1, "off": false, "list": [true, 1, false], "a.b": {"x": true}}
+{
+  "debug": true,
+  "n": 1,
+  "off": false,
+  "list": [
+    true,
+    1,
+    false
+  ],
+  "a.b": {
+    "x": true
+  }
+}
+["a.b", "debug", "list", "n", "off"]
+{"debug": true, "n": 1, "off": false, "list": [true, 1, false], "a.b": {"x": true}}
+{
+  "debug": true,
+  "n": 1,
+  "off": false,
+  "list": [
+    true,
+    1,
+    false
+  ],
+  "a.b": {
+    "x": true
+  }
+}
+true
+[true, false, 1, 0, null]
+{"k": [1, 2], "a": "x"}
+no
+{"k": [1, 2], "a": "x"}

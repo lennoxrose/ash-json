@@ -38,10 +38,7 @@ forge schema_type_ok(value, want) {
         given t != "number" { yield no; }
         yield floor(value) == value;
     }
-    given want == "boolean" {
-        given t != "number" { yield no; }
-        yield value == 0 or value == 1;
-    }
+    given want == "boolean" { yield t == "boolean"; }
     raise "schema: unknown type '" + want + "'";
 }
 

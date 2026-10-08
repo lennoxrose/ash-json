@@ -13,8 +13,8 @@ json: invalid number at line 1, column 1
 json: invalid number at line 1, column 1
 json: unexpected character '?' at line 2, column 8
 json: invalid escape at line 1, column 6
-json: unsupported escape \u00e9 at line 1, column 2
+"é"
 json: invalid \u escape at line 1, column 2
-json: unsupported escape \b at line 1, column 2
+"\u0008"
 json: cannot stringify a function
 json: parse expects a string

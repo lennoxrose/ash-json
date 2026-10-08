@@ -1,4 +1,4 @@
-{"list": [1, 2, 3], "obj": {"k": 1}, "quote": "say \"/* no */\"", "url": "http://x.y/a//b"}
+{"url": "http://x.y/a//b", "quote": "say \"/* no */\"", "list": [1, 2, 3], "obj": {"k": 1}}
 [1, 2]
 {"a": "x,]"}
 [1, 2]
@@ -12,5 +12,5 @@ null
 5
 [{"id": 1, "msg": "a\nb"}, [1, 2], "s", null, {"id": 5}]
 json: expected string key at line 3, column 2
-json: expected end of line at line 1, column 3
+json: unexpected trailing characters at line 1, column 3
 []
